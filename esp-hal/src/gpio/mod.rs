@@ -262,6 +262,16 @@ impl Display for WakeConfigError {
 
 impl core::error::Error for WakeConfigError {}
 
+/// Options for [`Input::wait_for_with_options`] and
+/// [`Flex::wait_for_with_options`].
+#[cfg_attr(feature = "defmt", derive(defmt::Format))]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq, procmacros::BuilderLite)]
+#[non_exhaustive]
+pub struct WaitForOptions {
+    /// Enable waking from light sleep on the configured event.
+    wake_enable: bool,
+}
+
 /// Pull setting for a GPIO.
 #[derive(Debug, Eq, PartialEq, Copy, Clone, Hash)]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
